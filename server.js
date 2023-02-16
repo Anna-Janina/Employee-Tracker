@@ -21,7 +21,7 @@ const db = mysql.createConnection(
 
   function initial() {
     inquirer
-        .prompt([
+        .prompt(
             {
                 type: 'list',
                 name: 'initialize',
@@ -34,14 +34,39 @@ const db = mysql.createConnection(
                             'Update Employee Role',
                             'Delete Role', 
                             'View All Employees', 
-                            'View Employees By Department',
-                            'View Employees By Managers',
-                            'Add Employee', 
-                            'Update Employee Managers', 
-                            'Delete Employees', 
-                            'DONE',
-                            ]
-            }
-            ])
-        // .then((answers))
-  }
+                            // 'View Employees By Department',
+                            // 'View Employees By Managers',
+                            // 'Add Employee', 
+                            // 'Update Employee Managers', 
+                            // 'Delete Employees', 
+                            // 'DONE',
+                            ],
+            })
+      .then((answers) => {
+        switch (answers.userOption) {
+          case 'View All Departments':
+            viewDepartments(connection, startPrompt);
+            break;
+          case 'Add Department':
+            createDepartment(connection, startPrompt);
+            break;
+          case 'Delete Department':
+              deleteDepartments(connection, startPrompt);
+              break;
+          case 'View ALL Roles':
+              viewRole(connection, startPrompt);
+              break;
+          case 'Add Role':
+                addRole(connection, startPrompt);
+                break;
+          case 'Update Employee Role':
+                updateRole(connection, startPrompt);
+                break;
+          case 'Delete Role':
+                deleteRole(connection, startPrompt);
+                break;
+          case 'View All Employees':
+                viewEmployees(connection, startPrompt);
+                break;
+      }
+  });

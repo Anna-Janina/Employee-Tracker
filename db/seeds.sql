@@ -25,9 +25,9 @@ VALUES
        ("Captain", "Hook", 5, NULL),
        ("Snow", "White", 7, NULL),
 -- Employees with managers
-    --    ("Account Manager", 160000, 2),
-    --    ("Accountant", 125000, 2),
-    --    ("Legal Team Lead", 250000, 4),
-    --    ("Lawyer", 190000, 4);
-    --    ("Lawyer", 190000, 4);
+       ("Wendy", "Darling", 2, 2),
+       ("Moana", "Waialiki", 4, 1),
+       ("Elsa", "Arendelle", 6, 3),
+       ("Ariel", "Mermaid", 8, 4);
+       ("Princess", "Jasmine", 9, 4);
       
