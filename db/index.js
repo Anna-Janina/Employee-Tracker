@@ -11,7 +11,7 @@ class DB {
     }
 
     // view department
-    viewDept(dept) {
+    viewDept() {
         return this.connection.promise().query(`SELECT * FROM department ORDER BY department_id`)
     }
 
