@@ -6,14 +6,24 @@ class DB {
     }
 
     // create a new department
-    createDept(dept) {
+    addDepartment(dept) {
         return this.connection.promise().query("INSERT INTO department SET ?", dept)
     }
 
     // view department
-    viewDept() {
+    viewDepartment() {
         return this.connection.promise().query(`SELECT * FROM department ORDER BY department_id`)
     }
+
+    // delete department
+    deleteDepartment(del_dep) {
+        return this.connection.promise().query("DELETE FROM department WHERE id = ?", del_dep)
+    }
+
+    // view roles
+    // viewRoles() {
+    //     return this.connection.promise().query(`SELECT * FROM department ORDER BY department_id`)
+    // }
 
 
 

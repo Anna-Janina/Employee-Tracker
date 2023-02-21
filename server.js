@@ -36,12 +36,16 @@ function startInitial() {
       let choice = answers.choice;
       console.log(choice);
       switch(choice) {
-        case "CREATE_DEPT":
-          createDept()
+        case "CREATE_DEPARTMENT":
+          addDepartment()
           break;
-        case "VIEW_DEPT":
-          viewDept()
+        case "VIEW_DEPARTMENT":
+          viewDepartment()
           break;
+        case "DELETE_DEPARTMENT":
+          deleteDepartment()
+          break;
+
         
         // case view all depts etc etc
         default:
@@ -50,15 +54,30 @@ function startInitial() {
   });
 }
 
-function createDept() {
+function addDepartment() {
   prompt({
     name: 'name',
-    message: 'What is the dept name?'
+    message: 'What is the department name?'
   })
   .then(response => {
     let deptName = response;
-    db.createDept(deptName)
+    db.addDepartment(deptName)
     .then(() => console.log(`added ${deptName.name} to db`))
+    .then(() => startInitial())
+  })
+}
+
+function deleteDepartment() {
+  prompt({
+    type: 'list',
+    name: 'id',
+    choices: del_dep,
+    message: 'Which department would you like to delete?'
+  })
+  .then(response => {
+    let deptName = response;
+    db.addDepartment(deptName)
+    .then(() => console.log(`deleted ${deptName.name} to db`))
     .then(() => startInitial())
   })
 }
@@ -66,10 +85,8 @@ function createDept() {
 
 
 
-
-  // choices: [                'View All Departments',
-                //             'Add Department',
-                //             'Delete Department',
+ 
+  
                 //             'View ALL Roles',
                 //             'Add Role', 
                 //             'Update Employee Role',
