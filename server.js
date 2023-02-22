@@ -14,7 +14,7 @@ function startInitial() {
                 choices: [ 'View All Departments',
                             'Add Department',
                             'Delete Department',
-                            'View ALL Roles',
+                            'View All Roles',
                             'Add Role', 
                             'Update Employee Role',
                             'Delete Role', 
@@ -57,28 +57,28 @@ function startInitial() {
         // case "View Employees By Managers":
         //   viewEmployeesManager()
         //   break;
-        // case "View All Employees":
-        //   viewEmployees()
-        //   break;
+        case "View All Employees":
+          viewEmployees()
+          break;
         // case "Add Employee":
         //   addEmployee()
         //   break;
         // case "Update Employee Role":
         //   updateEmployeeRole()
         //   break;
+        // case "Update Employee Managers":
+        //   updateEmployeeManagers()
+        //   break;
+        // case "Delete Role":
+        //   deleteRole()
+        //   break;
+        // case "Delete Employees":
+        //   deleteEmployees()
+        //   break;
+        // case "DONE":
+        //   deleteEmployees()
+        //   break;
 
- 
-        
-    
-                //             'Delete Role', 
-                
-                //             'Update Employee Managers', 
-                //             'Delete Employees', 
-                //             'DONE',
-
-
-
-        // case view all depts etc etc
         default:
           end()
       }
@@ -100,7 +100,7 @@ function addDepartment() {
 }
 
 function addRole() {
-  prompt({
+  prompt([{
     type: 'input',
     name: 'title',
     message: 'What is the title of the new role?'
@@ -114,21 +114,17 @@ function addRole() {
     type: 'input',
     name: 'department',
     message: 'What is the department of the new role?'
-  })
+  }])
   .then(response => {
-    let titleName = response;
-    let salaryName = response;
-    let departmentName = response;
-    db.addRole()
-    // db.addRole(salaryName)
-    // db.addRole(departmentName)
-    .then(() => console.log(`added ${titleName.name} to db`))
-    .then(() => console.log(`added ${salaryName.name} to db`))
-    .then(() => console.log(`added ${departmentName.name} to db`))
+    console.log(response)
+    let titleName = response.title;
+    let salaryName = response.salary;
+    let departmentName = response.department;
+    db.addRole(titleName, salaryName, departmentName)
+    .then(() => console.log(`added ${titleName.name} ${salaryName} to db`))
     .then(() => startInitial())
   })
 }
-
 
 function viewDepartment() {
   console.log("view all departments")
@@ -142,9 +138,72 @@ function viewRole() {
     console.table(rows)})
 }
 
+function viewEmployees() {
+  console.log("view all employees")
+  db.viewRole().then(([rows])=> {
+    console.table(rows)})
+}
+
+       
+
+
+
+
+// case "View Employees By Department":
+        //   viewEmployeesDepartment()
+        //   break;
+        // case "View Employees By Managers":
+        //   viewEmployeesManager()
+        //   break;
+        // case "Add Employee":
+        //   addEmployee()
+        //   break;
+        // case "Update Employee Role":
+        //   updateEmployeeRole()
+        //   break;
+        // case "Update Employee Managers":
+        //   updateEmployeeManagers()
+        //   break;
+        
+        // case "DONE":
+       
+
+
+
 
 
 // function deleteDepartment() {
+//   prompt({
+//     type: 'list',
+//     name: 'id',
+//     choices: del_dep,
+//     message: 'Which department would you like to delete?'
+//   })
+//   .then(response => {
+//     let deptName = response;
+//     db.addDepartment(deptName)
+//     .then(() => console.log(`deleted ${deptName.name} to db`))
+//     .then(() => startInitial())
+//   })
+// }
+
+
+// function deleteEmployees() {
+//   prompt({
+//     type: 'list',
+//     name: 'id',
+//     choices: del_dep,
+//     message: 'Which department would you like to delete?'
+//   })
+//   .then(response => {
+//     let deptName = response;
+//     db.addDepartment(deptName)
+//     .then(() => console.log(`deleted ${deptName.name} to db`))
+//     .then(() => startInitial())
+//   })
+// }
+
+// function deleteRole() {
 //   prompt({
 //     type: 'list',
 //     name: 'id',

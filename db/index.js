@@ -12,7 +12,7 @@ class DB {
 
     // create a new role
     addRole(title, salary, department_id) {
-        return this.connection.promise().query("INSERT INTO role (title, salary, department_id) SET ?", title, salary, department_id)
+        return this.connection.promise().query("INSERT INTO role (title, salary, department_id) VALUES (?,?,?)", [title, salary, department_id])
     }
 
     // view department
@@ -25,21 +25,41 @@ class DB {
         return this.connection.promise().query(`SELECT * FROM role`)
     }
 
+    // view employees
+    viewEmployees() {
+        return this.connection.promise().query(`SELECT * FROM employee`)
+    }
 
+
+
+
+
+
+
+
+
+    
 
     // delete department - NOT WORKING
     deleteDepartment(del_dep) {
         return this.connection.promise().query("DELETE FROM department WHERE id = ?", del_dep)
     }
 
+    // delete employees - NOT WORKING
+    deleteEmployees(del_dep) {
+        return this.connection.promise().query("DELETE FROM department WHERE id = ?", del_dep)
+    }
+
+    // delete role - NOT WORKING
+    deleteRole(del_dep) {
+        return this.connection.promise().query("DELETE FROM department WHERE id = ?", del_dep)
+    }
+
+
    
 
 
 
-
-    // findAll employees
-
-    //remove an employee
 }
 
 module.exports = new DB(connection);
