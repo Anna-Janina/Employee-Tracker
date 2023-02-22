@@ -12,7 +12,7 @@ class DB {
 
     // view department
     viewDepartment() {
-        return this.connection.promise().query(`SELECT * FROM department ORDER BY department_id`)
+        return this.connection.promise().query(`SELECT * FROM department`)
     }
 
     // delete department
@@ -22,7 +22,7 @@ class DB {
 
     // view roles
     // viewRoles() {
-    //     return this.connection.promise().query(`SELECT * FROM department ORDER BY department_id`)
+    //     return this.connection.promise().query(`SELECT * FROM department ORDER BY role_id`)
     // }
 
 

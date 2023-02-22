@@ -1,7 +1,7 @@
 // Import npm packages
 const { prompt } = require('inquirer');
 const db = require("./db")
-// require("console.table")
+require("console.table")
 
 startInitial()
 
@@ -36,13 +36,13 @@ function startInitial() {
       let choice = answers.choice;
       console.log(choice);
       switch(choice) {
-        case "CREATE_DEPARTMENT":
+        case "Add Department":
           addDepartment()
           break;
-        case "VIEW_DEPARTMENT":
+        case "View All Departments":
           viewDepartment()
           break;
-        case "DELETE_DEPARTMENT":
+        case "Delete Department":
           deleteDepartment()
           break;
 
@@ -52,6 +52,11 @@ function startInitial() {
           end()
       }
   });
+}
+function viewDepartment() {
+  console.log("view all departments")
+  db.viewDepartment().then(([rows])=> {
+    console.table(rows)})
 }
 
 function addDepartment() {
