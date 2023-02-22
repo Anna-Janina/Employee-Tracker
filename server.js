@@ -49,7 +49,7 @@ function startInitial() {
           addRole()
           break;
         case "View All Roles":
-          viewRole()
+          viewAllRoles()
           break;
         // case "View Employees By Department":
         //   viewEmployeesDepartment()
@@ -58,7 +58,7 @@ function startInitial() {
         //   viewEmployeesManager()
         //   break;
         case "View All Employees":
-          viewEmployees()
+          viewAllEmployees()
           break;
         // case "Add Employee":
         //   addEmployee()
@@ -136,9 +136,9 @@ function viewDepartment() {
 
 
 // working
-function viewRole() {
+function viewAllRoles() {
   console.log("view all roles")
-  db.viewRole().then(([rows])=> {
+  db.viewAllRoles().then(([rows])=> {
     console.table(rows)})
 }
 
@@ -195,8 +195,8 @@ function deleteRole() {
 
 
 // not working
-function viewEmployees() {
-  db.viewEmployees()
+function viewAllEmployees() {
+  db.viewAllEmployees()
     .then(([rows]) => {
       let employees = rows;
       console.table(employees)

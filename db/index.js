@@ -21,7 +21,7 @@ class DB {
     }
 
     // view department
-    viewRole() {
+    viewAllRoles() {
         return this.connection.promise().query(`SELECT * FROM role`)
     }
 
@@ -37,7 +37,7 @@ class DB {
 
 
     // view employees - NOT WORKING
-    viewEmployees() {
+    viewAllEmployees() {
         return this.connection.promise().query("SELECT employee.id, employee.first_name, employee.last_name, role.title, department.name AS department, role.salary")
     }
 
