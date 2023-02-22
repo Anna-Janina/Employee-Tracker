@@ -38,7 +38,7 @@ class DB {
 
     // view employees - NOT WORKING
     viewAllEmployees() {
-        return this.connection.promise().query("SELECT employee.id, employee.first_name, employee.last_name, role.title, department.name AS department, role.salary FROM employee")
+        return this.connection.promise().query("SELECT employee.id, employee.first_name, employee.last_name, role.title, department.name AS department, role.salary FROM employee left join role on role.id = employee.role_id left join department on department.id = role.department_id;")
     }
 
 
