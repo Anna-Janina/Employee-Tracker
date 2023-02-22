@@ -69,14 +69,13 @@ function startInitial() {
         // case "Update Employee Managers":
         //   updateEmployeeManagers()
         //   break;
-        // case "Delete Role":
-        //   deleteRole()
-        //   break;
+        case "Delete Role":
+          deleteRole()
+          break;
         // case "Delete Employees":
         //   deleteEmployees()
         //   break;
         // case "DONE":
-        //   deleteEmployees()
         //   break;
 
         default:
@@ -85,6 +84,7 @@ function startInitial() {
   });
 }
 
+// working
 function addDepartment() {
   prompt({
     type: 'input',
@@ -99,6 +99,7 @@ function addDepartment() {
   })
 }
 
+// working
 function addRole() {
   prompt([{
     type: 'input',
@@ -126,30 +127,89 @@ function addRole() {
   })
 }
 
+// working
 function viewDepartment() {
   console.log("view all departments")
   db.viewDepartment().then(([rows])=> {
     console.table(rows)})
 }
 
+
+// working
 function viewRole() {
   console.log("view all roles")
   db.viewRole().then(([rows])=> {
     console.table(rows)})
 }
 
+// working
+function deleteDepartment() {
+  db.viewDepartment()
+    .then(([rows]) => {
+      let departments = rows;
+      const choices = departments.map(({ id, name }) => ({
+        name: name,
+        value: id
+      }))
+        prompt({
+      type: 'list',
+      name: 'id',
+      choices: choices,
+      message: 'Which department would you like to delete?'
+      })
+      .then(response => {
+        let deptName = response;
+        db.deleteDepartment(deptName)
+        .then(() => console.log(`deleted ${deptName.name} to db`))
+        .then(() => startInitial())
+      })
+    })
+}
+
+// working
+function deleteRole() {
+  db.viewRole()
+    .then(([rows]) => {
+      let roles = rows;
+      const choices = roles.map(({ id, title }) => ({
+        name: title, 
+        value: id
+      }));
+      prompt({
+        type: 'list',
+        name: 'id',
+        choices: choices,
+        message: 'Which department would you like to delete?'
+      })
+      .then(response => {
+        db.deleteRole(response.id)
+        .then(() => console.log(`deleted ${response.id} to db`))
+        .then(() => startInitial())
+      })
+    })
+}
+
+
+
+
+
+
+// not working
 function viewEmployees() {
-  console.log("view all employees")
-  db.viewRole().then(([rows])=> {
-    console.table(rows)})
+  db.viewEmployees()
+    .then(([rows]) => {
+      let employees = rows;
+      console.table(employees)
+    })
+    .then(() => startInitial())
 }
 
        
 
 
 
-
-// case "View Employees By Department":
+// TO DO:
+        // case "View Employees By Department":
         //   viewEmployeesDepartment()
         //   break;
         // case "View Employees By Managers":
@@ -172,20 +232,7 @@ function viewEmployees() {
 
 
 
-// function deleteDepartment() {
-//   prompt({
-//     type: 'list',
-//     name: 'id',
-//     choices: del_dep,
-//     message: 'Which department would you like to delete?'
-//   })
-//   .then(response => {
-//     let deptName = response;
-//     db.addDepartment(deptName)
-//     .then(() => console.log(`deleted ${deptName.name} to db`))
-//     .then(() => startInitial())
-//   })
-// }
+
 
 
 // function deleteEmployees() {
@@ -203,20 +250,7 @@ function viewEmployees() {
 //   })
 // }
 
-// function deleteRole() {
-//   prompt({
-//     type: 'list',
-//     name: 'id',
-//     choices: del_dep,
-//     message: 'Which department would you like to delete?'
-//   })
-//   .then(response => {
-//     let deptName = response;
-//     db.addDepartment(deptName)
-//     .then(() => console.log(`deleted ${deptName.name} to db`))
-//     .then(() => startInitial())
-//   })
-// }
+
 
 
 

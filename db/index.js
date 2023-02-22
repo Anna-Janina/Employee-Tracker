@@ -25,13 +25,21 @@ class DB {
         return this.connection.promise().query(`SELECT * FROM role`)
     }
 
-    // view employees
-    viewEmployees() {
-        return this.connection.promise().query(`SELECT * FROM employee`)
+    // delete department - WORKING
+    deleteDepartment(del_dep) {
+        return this.connection.promise().query("DELETE FROM department WHERE id = ?", del_dep)
     }
 
 
 
+
+
+
+
+    // view employees - NOT WORKING
+    viewEmployees() {
+        return this.connection.promise().query("SELECT employee.id, employee.first_name, employee.last_name, role.title, department.name AS department, role.salary")
+    }
 
 
 
@@ -40,19 +48,14 @@ class DB {
 
     
 
-    // delete department - NOT WORKING
-    deleteDepartment(del_dep) {
-        return this.connection.promise().query("DELETE FROM department WHERE id = ?", del_dep)
-    }
-
     // delete employees - NOT WORKING
     deleteEmployees(del_dep) {
         return this.connection.promise().query("DELETE FROM department WHERE id = ?", del_dep)
     }
 
     // delete role - NOT WORKING
-    deleteRole(del_dep) {
-        return this.connection.promise().query("DELETE FROM department WHERE id = ?", del_dep)
+    deleteRole(id) {
+        return this.connection.promise().query("DELETE FROM role WHERE id = ?", id)
     }
 
 
@@ -63,19 +66,3 @@ class DB {
 }
 
 module.exports = new DB(connection);
-
-
-
-
-
-
-
-
-// Hardcoded query: DELETE FROM course_names WHERE id = 3;
-
-// db.query(`DELETE FROM course_names WHERE id = ?`, 3, (err, result) => {
-//     if (err) {
-//       console.log(err);
-//     }
-//     console.log(result);
-//   });
