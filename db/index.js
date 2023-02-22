@@ -10,20 +10,29 @@ class DB {
         return this.connection.promise().query("INSERT INTO department SET ?", dept)
     }
 
+    // create a new role
+    addRole(title) {
+        return this.connection.promise().query("INSERT INTO role (title, salary, department_id) SET ?", title)
+    }
+
     // view department
     viewDepartment() {
         return this.connection.promise().query(`SELECT * FROM department`)
     }
 
-    // delete department
+    // view department
+    viewRole() {
+        return this.connection.promise().query(`SELECT * FROM role`)
+    }
+
+
+
+    // delete department - NOT WORKING
     deleteDepartment(del_dep) {
         return this.connection.promise().query("DELETE FROM department WHERE id = ?", del_dep)
     }
 
-    // view roles
-    // viewRoles() {
-    //     return this.connection.promise().query(`SELECT * FROM department ORDER BY role_id`)
-    // }
+   
 
 
 
