@@ -11,8 +11,8 @@ class DB {
     }
 
     // create a new role
-    addRole(title) {
-        return this.connection.promise().query("INSERT INTO role (title, salary, department_id) SET ?", title)
+    addRole(title, salary, department_id) {
+        return this.connection.promise().query("INSERT INTO role (title, salary, department_id) SET ?", title, salary, department_id)
     }
 
     // view department

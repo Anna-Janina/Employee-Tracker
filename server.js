@@ -54,15 +54,24 @@ function startInitial() {
         // case "View Employees By Department":
         //   viewEmployeesDepartment()
         //   break;
-        
-        
+        // case "View Employees By Managers":
+        //   viewEmployeesManager()
+        //   break;
+        // case "View All Employees":
+        //   viewEmployees()
+        //   break;
+        // case "Add Employee":
+        //   addEmployee()
+        //   break;
+        // case "Update Employee Role":
+        //   updateEmployeeRole()
+        //   break;
+
  
-                //             'Update Employee Role',
+        
+    
                 //             'Delete Role', 
-                //             'View All Employees', 
-                //             
-                //             'View Employees By Managers',
-                //             'Add Employee', 
+                
                 //             'Update Employee Managers', 
                 //             'Delete Employees', 
                 //             'DONE',
@@ -110,9 +119,9 @@ function addRole() {
     let titleName = response;
     let salaryName = response;
     let departmentName = response;
-    db.addRole(titleName)
-    db.addRole(salaryName)
-    db.addRole(departmentName)
+    db.addRole()
+    // db.addRole(salaryName)
+    // db.addRole(departmentName)
     .then(() => console.log(`added ${titleName.name} to db`))
     .then(() => console.log(`added ${salaryName.name} to db`))
     .then(() => console.log(`added ${departmentName.name} to db`))
