@@ -60,9 +60,9 @@ function startInitial() {
         case "View All Employees":
           viewAllEmployees()
           break;
-        // case "Add Employee":
-        //   addEmployee()
-        //   break;
+        case "Add Employee":
+          addEmployee()
+          break;
         // case "Update Employee Role":
         //   updateEmployeeRole()
         //   break;
@@ -74,8 +74,6 @@ function startInitial() {
           break;
         // case "Delete Employees":
         //   deleteEmployees()
-        //   break;
-        // case "DONE":
         //   break;
 
         default:
@@ -189,12 +187,7 @@ function deleteRole() {
     })
 }
 
-
-
-
-
-
-// not working
+// working
 function viewAllEmployees() {
   db.viewAllEmployees()
     .then(([rows]) => {
@@ -204,7 +197,47 @@ function viewAllEmployees() {
     .then(() => startInitial())
 }
 
-       
+
+
+
+// NOT working
+function addEmployee() {
+  prompt([{
+    type: 'input',
+    name: 'first_name',
+    message: 'What is the first name of the employee?'
+  },
+  {
+    type: 'input',
+    name: 'last_name',
+    message: 'What is the last name of the employee?'
+  },
+  {
+    type: 'list',
+    name: 'role_id',
+    message: 'What is the employee role id?',
+    choices: ['10', '11', '12', '13', '14']
+  },
+  {
+    type: 'list',
+    name: 'manager_id',
+    message: 'What is the employees manager id?',
+    choices: ['1', '3', '5', '7']
+  }])
+  .then(response => {
+    console.log(response)
+    let first_nameName = response.first_name;
+    let last_nameName = response.last_name;
+    let role_idName = response.role_id;
+    let manager_idName = response.manager_id;
+    db.addEmployee(first_nameName, last_nameName, role_idName, manager_idName)
+    .then(() => console.log(`added ${first_nameName.name} ${last_nameName} ${role_idName.name} ${manager_idName.name}to db`))
+    .then(() => startInitial())
+  })
+}     
+
+
+
 
 
 
