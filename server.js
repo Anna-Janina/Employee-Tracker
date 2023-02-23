@@ -197,10 +197,7 @@ function viewAllEmployees() {
     .then(() => startInitial())
 }
 
-
-
-
-// NOT working
+// working
 function addEmployee() {
   prompt([{
     type: 'input',
@@ -247,9 +244,6 @@ function addEmployee() {
         //   break;
         // case "View Employees By Managers":
         //   viewEmployeesManager()
-        //   break;
-        // case "Add Employee":
-        //   addEmployee()
         //   break;
         // case "Update Employee Role":
         //   updateEmployeeRole()
