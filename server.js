@@ -99,31 +99,40 @@ function addDepartment() {
 
 // NOT working - NEEDS WORK
 function addRole() {
-  prompt([{
-    type: 'input',
-    name: 'title',
-    message: 'What is the title of the new role?'
-  },
-  {
-    type: 'input',
-    name: 'salary',
-    message: 'What is the salary of the new role?'
-  },
-  {
-    type: 'list',
-    name: 'department',
-    message: 'What is the department of the new role?',
-    choices: ['Sales', 'Finance', 'Engineering', 'Legal']
-  }])
-  .then(response => {
-    console.log(response)
-    let titleName = response.title;
-    let salaryName = response.salary;
-    let departmentName = response.department;
-    db.addRole(titleName, salaryName, departmentName)
-    .then(() => console.log(`added ${titleName.name} ${salaryName} to db`))
-    .then(() => startInitial())
-  })
+  db.viewDepartment().then(([rows]) => {
+      let departments = rows;
+      const choices = departments.map(({ id, name }) => ({
+          name: name,
+          value: id,
+      }));
+
+      prompt([
+          {
+              type: 'input',
+              name: 'title',
+              message: 'What is the title of the new role?',
+          },
+          {
+              type: 'input',
+              name: 'salary',
+              message: 'What is the salary of the new role?',
+          },
+          {
+              type: 'list',
+              name: 'department_id',
+              message: 'What is the department of the new role?',
+              choices: choices,
+          },
+      ]).then((response) => {
+          console.log(response);
+          let titleName = response.title;
+          let salaryName = response.salary;
+          let departmentName = response.department_id;
+          db.addRole(titleName, salaryName, departmentName)
+              .then(() => console.log(`added ${titleName.name} ${salaryName} to db`))
+              .then(() => startInitial());
+      });
+  });
 }
 
 

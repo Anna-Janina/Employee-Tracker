@@ -12,23 +12,26 @@
 
 
 ## Description
-Note Take is an application to write your notes, save them and delete them. 
+Employee Tracker an command-line application to manage a company's employees.
 
 ---- LINK -----
 
 
 ## Usage
-node server.js
+- Add department, roles employees
+- View departments, roles, employees
+- Update employee roles
+- Update employees managers
+- View employees by manager
+- Delete department, roles and employees
 
 
 ## Installation
-npm install (express, uuid)
+npm install, inquirer, schema.sql, seed.sql
 
 
 ## Build with
-- HTML
-- CSS
-- Bootstrap
+- SQL
 - JavaScript
 - Node.js
 
