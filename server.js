@@ -97,7 +97,7 @@ function addDepartment() {
   })
 }
 
-// working
+// NOT working - NEEDS WORK
 function addRole() {
   prompt([{
     type: 'input',
@@ -110,9 +110,10 @@ function addRole() {
     message: 'What is the salary of the new role?'
   },
   {
-    type: 'input',
+    type: 'list',
     name: 'department',
-    message: 'What is the department of the new role?'
+    message: 'What is the department of the new role?',
+    choices: ['Sales', 'Finance', 'Engineering', 'Legal']
   }])
   .then(response => {
     console.log(response)
@@ -124,6 +125,7 @@ function addRole() {
     .then(() => startInitial())
   })
 }
+
 
 // working
 function viewDepartment() {
