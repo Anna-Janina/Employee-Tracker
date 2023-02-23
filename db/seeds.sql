@@ -29,6 +29,6 @@ VALUES
        ("Wendy", "Darling", 2, 2),
        ("Moana", "Waialiki", 4, 1),
        ("Elsa", "Arendelle", 6, 3),
-       ("Ariel", "Mermaid", 8, 4);
-       ("Princess", "Jasmine", 9, 4);
+       ("Ariel", "Mermaid", 8, 4),
+       ("Princess", "Jasmine", 8, 4);
       

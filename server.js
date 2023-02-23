@@ -75,7 +75,6 @@ function startInitial() {
         // case "Delete Employees":
         //   deleteEmployees()
         //   break;
-
         default:
           end()
       }
@@ -135,14 +134,12 @@ function addRole() {
   });
 }
 
-
 // working
 function viewDepartment() {
   console.log("view all departments")
   db.viewDepartment().then(([rows])=> {
     console.table(rows)})
 }
-
 
 // working
 function viewAllRoles() {
@@ -151,7 +148,7 @@ function viewAllRoles() {
     console.table(rows)})
 }
 
-// working
+// working - NOT WORKING
 function deleteDepartment() {
   db.viewDepartment()
     .then(([rows]) => {
@@ -175,9 +172,9 @@ function deleteDepartment() {
     })
 }
 
-// working - NOT WORKING NOW
+// working 
 function deleteRole() {
-  db.viewRole()
+  db.viewAllRoles()
     .then(([rows]) => {
       let roles = rows;
       const choices = roles.map(({ id, title }) => ({
@@ -263,7 +260,7 @@ function addEmployee() {
         //   updateEmployeeManagers()
         //   break;
         
-        // case "DONE":
+       
        
 
 

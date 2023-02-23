@@ -25,7 +25,7 @@ class DB {
         return this.connection.promise().query(`SELECT * FROM role`)
     }
 
-    // delete department 
+    // delete department - NOT WORKING
     deleteDepartment(del_dep) {
         return this.connection.promise().query("DELETE FROM department WHERE id = ?", del_dep)
     }
@@ -35,15 +35,12 @@ class DB {
         return this.connection.promise().query("SELECT employee.id, employee.first_name, employee.last_name, role.title, department.name AS department, role.salary FROM employee left join role on role.id = employee.role_id left join department on department.id = role.department_id;")
     }
 
-    // add a employee - WORKING
+    // add a employee
     addEmployee(first_name, last_name, role_id, manager_id) {
     return this.connection.promise().query("INSERT INTO employee (first_name, last_name, role_id, manager_id) VALUES (?,?,?,?)", [first_name, last_name, role_id, manager_id])
     }
 
-
-    
-
-    // delete role - NOT WORKING
+    // delete role - WORKING
     deleteRole(id) {
     return this.connection.promise().query("DELETE FROM role WHERE id = ?", id)
     }
