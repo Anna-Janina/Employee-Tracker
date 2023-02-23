@@ -11,17 +11,17 @@ function startInitial() {
                 type: 'list',
                 name: 'choice',
                 message: 'Select from the following options:',
-                choices: [ 'View All Departments',
-                            'Add Department',
+                choices: [ 'Add Department',
+                            'View All Departments',
                             'Delete Department',
+                            'Add Role',
                             'View All Roles',
-                            'Add Role', 
-                            'Update Employee Role',
-                            'Delete Role', 
-                            'View All Employees', 
+                            'Delete Role',
+                            'Add Employee',
+                            'View All Employees',
                             'View Employees By Department',
                             'View Employees By Managers',
-                            'Add Employee', 
+                            'Update Employee Role',
                             'Update Employee Managers', 
                             'Delete Employees', 
                             'DONE',
@@ -81,7 +81,6 @@ function startInitial() {
   });
 }
 
-// working
 function addDepartment() {
   prompt({
     type: 'input',
@@ -96,7 +95,6 @@ function addDepartment() {
   })
 }
 
-// working
 function addRole() {
   db.viewDepartment().then(([rows]) => {
       let departments = rows;
@@ -134,21 +132,18 @@ function addRole() {
   });
 }
 
-// working
 function viewDepartment() {
   console.log("view all departments")
   db.viewDepartment().then(([rows])=> {
     console.table(rows)})
 }
 
-// working
 function viewAllRoles() {
   console.log("view all roles")
   db.viewAllRoles().then(([rows])=> {
     console.table(rows)})
 }
 
-// working - NOT WORKING
 function deleteDepartment() {
   db.viewDepartment()
     .then(([rows]) => {
@@ -164,15 +159,15 @@ function deleteDepartment() {
       message: 'Which department would you like to delete?'
       })
       .then(response => {
-        let deptName = response;
-        db.deleteDepartment(deptName)
-        .then(() => console.log(`deleted ${deptName.name} to db`))
+        console.log(response);
+        let deptId = response.id;
+        db.deleteDepartment(deptId)
+        .then(() => console.log(`deleted ${deptId.name} to db`))
         .then(() => startInitial())
       })
     })
 }
-
-// working 
+ 
 function deleteRole() {
   db.viewAllRoles()
     .then(([rows]) => {
@@ -195,7 +190,6 @@ function deleteRole() {
     })
 }
 
-// working
 function viewAllEmployees() {
   db.viewAllEmployees()
     .then(([rows]) => {
@@ -205,7 +199,6 @@ function viewAllEmployees() {
     .then(() => startInitial())
 }
 
-// working
 function addEmployee() {
   prompt([{
     type: 'input',
@@ -240,70 +233,6 @@ function addEmployee() {
     .then(() => startInitial())
   })
 }     
-
-
-
-
-
-
-// TO DO:
-        // case "View Employees By Department":
-        //   viewEmployeesDepartment()
-        //   break;
-        // case "View Employees By Managers":
-        //   viewEmployeesManager()
-        //   break;
-        // case "Update Employee Role":
-        //   updateEmployeeRole()
-        //   break;
-        // case "Update Employee Managers":
-        //   updateEmployeeManagers()
-        //   break;
-        
-       
-       
-
-
-
-
-
-
-
-
-// function deleteEmployees() {
-//   prompt({
-//     type: 'list',
-//     name: 'id',
-//     choices: del_dep,
-//     message: 'Which department would you like to delete?'
-//   })
-//   .then(response => {
-//     let deptName = response;
-//     db.addDepartment(deptName)
-//     .then(() => console.log(`deleted ${deptName.name} to db`))
-//     .then(() => startInitial())
-//   })
-// }
-
-
-
-
-
-
- 
-  
-               
-
-
-
-
-
-
-
-
-
-
-
 
 function end() {
   process.exit();
