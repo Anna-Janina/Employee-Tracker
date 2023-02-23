@@ -97,7 +97,7 @@ function addDepartment() {
   })
 }
 
-// NOT working - NEEDS WORK
+// working
 function addRole() {
   db.viewDepartment().then(([rows]) => {
       let departments = rows;
@@ -129,7 +129,7 @@ function addRole() {
           let salaryName = response.salary;
           let departmentName = response.department_id;
           db.addRole(titleName, salaryName, departmentName)
-              .then(() => console.log(`added ${titleName.name} ${salaryName} to db`))
+              .then(() => console.log(`added ${titleName} ${salaryName} to db`))
               .then(() => startInitial());
       });
   });
@@ -175,7 +175,7 @@ function deleteDepartment() {
     })
 }
 
-// working
+// working - NOT WORKING NOW
 function deleteRole() {
   db.viewRole()
     .then(([rows]) => {

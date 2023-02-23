@@ -10,7 +10,7 @@ class DB {
         return this.connection.promise().query("INSERT INTO department SET ?", dept)
     }
 
-    // create a new role - NEEDS UPDATE
+    // create a new role 
     addRole(title, salary, department_id) {
         return this.connection.promise().query("INSERT INTO role (title, salary, department_id) VALUES (?,?,?)", [title, salary, department_id])
     }
@@ -41,19 +41,16 @@ class DB {
     }
 
 
-
-
     
-
-    // delete employees - NOT WORKING
-    deleteEmployees(del_dep) {
-        return this.connection.promise().query("DELETE FROM department WHERE id = ?", del_dep)
-    }
 
     // delete role - NOT WORKING
     deleteRole(id) {
-        return this.connection.promise().query("DELETE FROM role WHERE id = ?", id)
+    return this.connection.promise().query("DELETE FROM role WHERE id = ?", id)
     }
+    
+
+    
+    
 
 
    
